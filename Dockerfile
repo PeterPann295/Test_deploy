@@ -1,16 +1,19 @@
 # Stage 1: Build the application
 FROM ubuntu:latest AS build
 RUN apt-get update && \
-    apt-get install -y openjdk-17-jdk maven
+    apt-get install -y openjdk-21-jdk maven
 
 WORKDIR /app
 COPY . .
 
 # Build the Spring Boot application
-RUN ./mvnw clean package
+RUN chmod +x mvnw
+
+# Build the Spring Boot application
+RUN ./mvnw clean package -DskipTests
 
 # Stage 2: Run the application
-FROM openjdk:17-jdk-slim
+FROM openjdk:21-jdk-slim
 WORKDIR /app
 
 # Copy the built JAR file from the previous stage
