@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . .
 
 # Build the Spring Boot application
-RUN ./mvnw clean package -DskipTests
+RUN ./mvnw clean package
 
 # Stage 2: Run the application
 FROM openjdk:17-jdk-slim
