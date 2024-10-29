@@ -11,4 +11,8 @@ public class TestController {
     public String test(){
         return "Haha deploy thanh cong roi thang lon";
     }
+    @GetMapping("/getData")
+    public String data(){
+        return "Haha da lay data thanh cong roi thang lon";
+    }
 }
